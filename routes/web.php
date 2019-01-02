@@ -11,6 +11,19 @@
 |
 */
 
+class message {
+
+    public $body;
+
+    public function __construct()
+    {
+        $this->body = 'ahmed';
+    }
+}
+
 Route::get('/', function () {
+
+    \App\Events\SendMessage::dispatch();
+
     return view('welcome');
 });
