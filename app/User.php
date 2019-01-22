@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'avatar',
     ];
 
     /**
@@ -27,4 +27,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $appends = ['avatar_url'];
+
+    function getAvatarUrlAttribute() {
+
+        return "https://api.adorable.io/avatars/256/{$this->email}.png";
+    }
 }

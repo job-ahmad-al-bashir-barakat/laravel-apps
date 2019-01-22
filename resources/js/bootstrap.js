@@ -1,4 +1,3 @@
-
 window._ = require('lodash');
 
 /**
@@ -52,10 +51,6 @@ window.Echo = new Echo({
     broadcaster: 'pusher',
     key: process.env.MIX_PUSHER_APP_KEY,
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-    encrypted: true
+    encrypted: true,
+    // namespace: 'App.Other.Namespace'
 });
-
-window.Echo.channel('messages')
-    .listen('SendMessage', e => {
-        console.log(e);
-    })

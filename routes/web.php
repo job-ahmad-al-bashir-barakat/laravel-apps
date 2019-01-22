@@ -11,20 +11,7 @@
 |
 */
 
-class message {
+Route::get('/', 'HomeController@welcome')->name('welcome');
+Route::get('/home', 'HomeController@index')->name('home');
 
-    public $body;
-
-    public function __construct($message)
-    {
-        $this->body = $message;
-    }
-}
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/update',function () {
-    \App\Events\SendMessage::dispatch(new message('Hi Koko'));
-});
+Auth::routes();

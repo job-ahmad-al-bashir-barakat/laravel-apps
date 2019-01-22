@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace Modules\Chat\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
@@ -24,16 +24,17 @@ class SendMessage implements ShouldBroadcast
     public function __construct($message)
     {
         $this->message = $message;
+
+        $this->dontBroadcastToCurrentUser();
     }
 
     /**
-     * Get the channels the event should broadcast on.
+     * Get the channels the event should be broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @return array
      */
     public function broadcastOn()
     {
         return new Channel('messages');
-        // return new PrivateChannel('channel-name');
     }
 }
